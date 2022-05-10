@@ -1,0 +1,51 @@
+#:import get_hex_from_color kivy.utils.get_hex_from_color
+
+
+<CardMessage>
+    orientation: "vertical"
+    spacing: "8dp"
+
+    MDLabel:
+        adaptive_height: True
+        -text_size: root.width - (root.padding[0] + dp(12)), dp(40)
+        color: 1, 1, 1, .5
+        font_size: "12sp"
+        markup: True
+        pos_hint: {"top": 1}
+        text:
+            f"[color={get_hex_from_color(get_color_from_hex('#cedbe6'))}]" \
+            f"{root.message}" \
+            f"[/color]" \
+            f" {root.date}"
+
+    MDBoxLayout:
+        adaptive_height: True
+        spacing: "8dp"
+
+        FitImage:
+            id: avatar
+            size_hint: None, None
+            height: "32dp"
+            width: self.height
+            source: root.path_to_avatar
+            radius: self.height / 2
+
+        MDBoxLayout:
+            orientation: "vertical"
+            spacing: "12dp"
+            adaptive_height: True
+
+            MDIcon:
+                icon: "check-circle-outline"
+                theme_text_color: "Custom"
+                text_color: get_color_from_hex("#67b57d")
+                font_size: "14sp"
+
+            MDLabel:
+                text: root.name_user
+                font_style: "Caption"
+                adaptive_height: True
+                color: 1, 1, 1, 1
+
+
+

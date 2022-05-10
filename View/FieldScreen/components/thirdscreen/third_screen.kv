@@ -1,0 +1,95 @@
+<ThirdScreen>
+    md_bg_color: app.theme_cls.bg_dark
+
+    FitImage:
+        id: bg
+        size_hint: 1, .4
+        y: root.height - self.height
+        source: f"{os.environ['KITCHEN_SINK_ROOT']}/assets/images/field_screen/third_screen/bg.png"
+
+    RoundCard:
+        id: avatar_card
+        size_hint: None, None
+        size: "150dp", "150dp"
+        radius: self.height / 2
+        y: bg.y + dp(56)
+        elevation: 18
+        pos_hint: {"center_x": .5, "center_y": .85}
+
+        FitImage:
+            radius: avatar_card.radius
+            source: f"{os.environ['KITCHEN_SINK_ROOT']}/assets/images/field_screen/third_screen/avatar.jpg"
+
+    MDBoxLayout:
+        orientation: "vertical"
+        adaptive_height: True
+        y: box_field.y + box_field.height + dp(24)
+        pos_hint: {"center_x": .5}
+        spacing: "12dp"
+
+        MDLabel:
+            text: "Welcome Back"
+            font_style: "H5"
+            bold: True
+            adaptive_height: True
+            halign: "center"
+
+        MDLabel:
+            text: "Sign in to your account"
+            font_style: "Caption"
+            theme_text_color: "Hint"
+            bold: True
+            adaptive_height: True
+            halign: "center"
+
+    MDBoxLayout:
+        id: card_fields
+        adaptive_height: True
+        pos_hint: {"center_y": .4}
+        padding: "56dp", 0, "56dp", 0
+
+        MDBoxLayout:
+            id: box_field
+            orientation: "vertical"
+            adaptive_height: True
+            pos_hint: {"center_y": .5}
+            spacing: "12dp"
+
+            MDTextField:
+                hint_text: "Login"
+                icon_left: "account"
+                mode: "fill"
+                fill_color_normal: 0, 0, 0, .1
+                fill_color_focus: 0, 0, 0, .2
+
+            MDTextField:
+                hint_text: "Password"
+                icon_left: "lock"
+                mode: "fill"
+                fill_color_normal: 0, 0, 0, .1
+                fill_color_focus: 0, 0, 0, .2
+
+            MDTextField:
+                hint_text: "Email"
+                icon_left: "email"
+                mode: "fill"
+                fill_color_normal: 0, 0, 0, .1
+                fill_color_focus: 0, 0, 0, .2
+
+    MDLabel:
+        text: "Don`t have an account?"
+        font_style: "Caption"
+        theme_text_color: "Hint"
+        bold: True
+        adaptive_height: True
+        y: "56dp"
+        halign: "center"
+
+    MDRectangleFlatButton:
+        text: "SIGN IN"
+        y: "120dp"
+        pos_hint: {"center_x": .5}
+        size_hint_x: None
+        width: card_fields.width - card_fields.padding[0] * 2 - dp(56)
+        line_color: app.theme_cls.disabled_hint_text_color
+        text_color: app.theme_cls.disabled_hint_text_color

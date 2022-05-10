@@ -1,0 +1,69 @@
+<OneScreen>
+    md_bg_color: app.theme_cls.bg_dark
+
+    MDLabel:
+        text: "Welcome Back"
+        bold: True
+        pos_hint: {"center_y": .8}
+        font_style: "H5"
+        halign: "center"
+
+    Image:
+        size_hint_y: .3
+        pos_hint: {"center_x": .5, "center_y": .6}
+        source:
+            f"{os.environ['KITCHEN_SINK_ROOT']}" \
+            f"/assets/images/field_screen/one_screen/bg.png"
+
+    MDBoxLayout:
+        md_bg_color: app.theme_cls.primary_color
+        size_hint: None, .2
+        width: self.height
+        radius: self.height / 2
+        pos: -self.height / 3, root.height - self.height + dp(42)
+
+    MDBoxLayout:
+        md_bg_color: app.theme_cls.primary_color
+        size_hint: None, .15
+        width: self.height
+        radius: self.height / 2
+        pos: root.width - self.width / 2.2, root.height - dp(240)
+
+    MDBoxLayout:
+        orientation: "vertical"
+        spacing: "12dp"
+        size_hint_x: .6
+        pos_hint: {"center_x": .5, "center_y": .3}
+        adaptive_height: True
+
+        MDTextField:
+            id: email_field
+            icon_left: "email"
+            mode: "round"
+            hint_text: "Username"
+            normal_color: .8, .8, .8, 1
+            color_active: .9, .9, .9, 1
+            -height: "42dp"
+
+        MDTextField:
+            icon_left: "lock"
+            mode: "round"
+            hint_text: "Password"
+            normal_color: .8, .8, .8, 1
+            color_active: .9, .9, .9, 1
+            -height: "42dp"
+
+        MDFillRoundFlatButton:
+            text: "LOGIN"
+            size_hint: None, None
+            size: email_field.size[0] + dp(42), email_field.size[1]
+            pos_hint: {"center_x": .5}
+
+    MDLabel:
+        text: "Forgot password?"
+        bold: True
+        adaptive_height: True
+        halign: "center"
+        y: dp(48)
+        font_style: "Caption"
+        theme_text_color: "Hint"

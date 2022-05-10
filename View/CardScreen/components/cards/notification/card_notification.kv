@@ -1,0 +1,45 @@
+#:import IconLeftWidgetWithoutTouch kivymd.uix.list.IconLeftWidgetWithoutTouch
+#:import Window kivy.core.window.Window
+
+
+<CardNotificationItem@TwoLineAvatarIconListItem>
+    left_icon: ""
+    icon_color: [0, 0, 0, 0]
+    theme_text_color: "Custom"
+    secondary_theme_text_color: "Custom"
+    secondary_font_style: "Caption"
+    text_color: 1, 1, 1, 1
+    secondary_text_color: 1, 1, 1, .5
+
+    IconLeftWidgetWithoutTouch:
+        icon: root.left_icon
+        theme_text_color: "Custom"
+        text_color: root.icon_color
+
+    IconRightWidget:
+        icon: "chevron-down"
+        theme_text_color: "Custom"
+        text_color: 1, 1, 1, 1
+
+
+<CardNotification>
+    orientation: "vertical"
+    size_hint: None, None
+    size: Window.width - dp(24), self.minimum_height
+    pos_hint: {"center_x": .5}
+    y: "32dp"
+    padding: 0
+
+    CardNotificationItem:
+        text: root.text_top
+        secondary_text: root.secondary_text_top
+        left_icon: root.icon_top
+        radius: root.radius[0], root.radius[0], 0, 0
+        icon_color: root.icon_color
+
+    CardNotificationItem:
+        text: root.text_bottom
+        secondary_text: root.secondary_text_bottom
+        left_icon: root.icon_bottom
+        radius: 0, 0, root.radius[0], root.radius[0]
+        icon_color: root.icon_color

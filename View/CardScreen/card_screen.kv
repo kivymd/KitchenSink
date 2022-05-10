@@ -1,0 +1,119 @@
+#:import images_path kivymd.images_path
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import date datetime.date
+#:import datetime datetime.datetime
+#:import os os
+
+#:set today date.today()
+#:set now datetime.now()
+
+
+<CardScreenLabel@MDLabel>
+    adaptive_height: True
+    color: "#1e4974"
+    font_name: f"{os.environ['KITCHEN_SINK_ASSETS']}/fonts/nasalization.ttf"
+
+
+<CardScreenView>
+
+    FitImage:
+        source:
+            f"{os.environ['KITCHEN_SINK_ASSETS']}/" \
+            f"images/card_screen/nature-bg.jpg"
+
+    MDBoxLayout:
+        orientation: "vertical"
+        padding: "12dp"
+
+        CardScreenLabel:
+            id: time
+            text: today.strftime("%b-%d-%Y")
+            font_size: "24"
+
+        CardScreenLabel:
+            text: now.strftime("%H:%M:%S")
+            font_size: "48"
+
+        ScrollView:
+            size_hint_y: None
+            height: root.height - (card_notification.height + dp(96))
+            bar_width: 0
+
+            MDList:
+                spacing: "12dp"
+
+                MDBoxLayout:
+                    adaptive_height: True
+                    spacing: "12dp"
+
+                    CardProfile:
+                        name_user: root.data_cards["profile"]["name_user"]
+                        date: root.data_cards["profile"]["date"]
+                        status: root.data_cards["profile"]["status"]
+                        radius: self.height / root.data_cards["profile"]["radius"]
+                        path_to_avatar:
+                            os.path.join( \
+                            os.environ['KITCHEN_SINK_ASSETS'], \
+                            root.data_cards["profile"]["avatar"])
+                        md_bg_color:
+                            get_color_from_hex(root.data_cards["profile"]["card_color"])
+
+                    CardMessage:
+                        id: card_message
+                        name_user: root.data_cards["message"]["name_user"]
+                        message: root.data_cards["message"]["message"]
+                        date: root.data_cards["message"]["date"]
+                        radius: self.height / root.data_cards["message"]["radius"]
+                        padding: "12dp"
+                        path_to_avatar:
+                            os.path.join( \
+                            os.environ['KITCHEN_SINK_ASSETS'], \
+                            root.data_cards["message"]["avatar"])
+                        md_bg_color:
+                            get_color_from_hex(root.data_cards["message"]["card_color"])
+
+                CardCall:
+                    name_caller: root.data_cards["call"]["name_user"]
+                    radius: self.height / root.data_cards["call"]["radius"]
+                    md_bg_color:
+                        get_color_from_hex(root.data_cards["message"]["card_color"])
+
+                CardProfile:
+                    name_user: root.data_cards["message"]["name_user"].split()[0]
+                    date: root.data_cards["profile"]["date"]
+                    status: root.data_cards["profile"]["status"]
+                    radius: self.height / root.data_cards["profile"]["radius"]
+                    path_to_avatar:
+                        os.path.join( \
+                        os.environ['KITCHEN_SINK_ROOT'],
+                        root.data_cards["message"]["avatar"])
+                    md_bg_color:
+                        get_color_from_hex(root.data_cards["profile"]["card_color"])
+
+        Widget:
+
+    CardNotification:
+        id: card_notification
+        radius: self.height / root.data_cards["message"]["radius"]
+        pos_hint: {"center_x": .5}
+        padding: 0
+        text_top: root.data_cards["notification"]["text_top"]
+        icon_top: root.data_cards["notification"]["icon_top"]
+        text_bottom: root.data_cards["notification"]["text_bottom"]
+        icon_bottom: root.data_cards["notification"]["icon_bottom"]
+        secondary_text_bottom:
+            root.data_cards["notification"]["secondary_text_bottom"]
+        secondary_text_top:
+            root.data_cards["notification"]["secondary_text_top"]
+        icon_color:
+            get_color_from_hex(root.data_cards["notification"]["icon_color"])
+        md_bg_color:
+            get_color_from_hex(root.data_cards["notification"]["card_color"])
+
+    MDIconButton:
+        icon: "arrow-left"
+        md_bg_color: 0, 0, 0, .2
+        on_release: app.go_to_back_screen()
+        pos:
+            root.width - self.width - dp(12), \
+            root.height - self.height - dp(12)

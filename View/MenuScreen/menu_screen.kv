@@ -1,0 +1,26 @@
+<MenuScreenView>
+
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDTopAppBar:
+            title: "Kitchen Sink"
+            anchor_title: "left"
+
+        RecycleView:
+            id: menu_list
+            size_hint_x: None
+            width: root.width * 95 / 100
+            pos_hint: {"center_x": .5}
+            bar_width: 0
+            key_viewclass: 'viewclass'
+            key_size: 'height'
+
+            RecycleBoxLayout:
+                padding: dp(10)
+                spacing: dp(24)
+                default_size: None, dp(200)
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: 'vertical'

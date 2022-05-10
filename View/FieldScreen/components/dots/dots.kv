@@ -1,0 +1,20 @@
+<Dot@MDBoxLayout>
+    index: 0
+    size_hint: None, None
+    size: "12dp", "12dp"
+    radius: self.size[0] / 2
+    md_bg_color: app.theme_cls.disabled_hint_text_color
+
+
+<Dots>
+    adaptive_size: True
+    pos_hint: {"center_x": .5}
+    spacing: "8dp"
+
+    Dot:
+        md_bg_color: app.theme_cls.primary_color
+        index: 0
+    Dot:
+        index: 1
+    Dot:
+        index: 2

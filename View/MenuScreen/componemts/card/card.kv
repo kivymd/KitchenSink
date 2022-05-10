@@ -1,0 +1,22 @@
+<MenuCard>
+    size_hint: 1, None
+    height: "200dp"
+    radius: 12
+    ripple_behavior: True
+
+    RelativeLayout:
+
+        BoxLayout:
+            padding: "12dp"
+
+            Image:
+                source: root.source
+
+        MDLabel:
+            text: root.title
+            bold: True
+            adaptive_height: True
+            font_style: "H5"
+            halign: "left"
+            padding_x: "24dp"
+            pos_hint: {"center_y": .65}

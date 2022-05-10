@@ -1,0 +1,78 @@
+#:import os os
+
+
+<AccountItem@OneLineItem>
+    height: "84dp"
+    _txt_bot_pad: "32dp"
+
+
+<ListScreenView>
+
+    MDBoxLayout:
+        orientation: "vertical"
+
+        FitImage:
+            opacity: .5
+            size_hint_y: .4
+            source:
+                f"{os.environ['KITCHEN_SINK_ASSETS']}/" \
+                f"images/list_screen/image.png"
+
+        ScrollView:
+            size_hint_y: .6
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    source:
+                        f"{os.environ['KITCHEN_SINK_ASSETS']}/" \
+                        f"images/list_screen/bg.png"
+
+            MDList:
+
+                AccountItem:
+                    text: "Edit Profile"
+                    icon: "account"
+                AccountItem:
+                    text: "Call Center"
+                    icon: "phone"
+                AccountItem:
+                    text: "About Apps"
+                    icon: "tablet-android"
+                AccountItem:
+                    text: "Logout"
+                    icon: "account-circle"
+
+    MDBoxLayout:
+        adaptive_height: True
+        spacing: "12dp"
+        x: "24dp"
+        pos_hint: {"top": .96}
+
+        MDBoxLayout:
+            size_hint: None, None
+            size: "120dp", "120dp"
+            radius: self.width / 2
+
+            FitImage:
+                radius: self.width / 2
+                source:
+                    f"{os.environ['KITCHEN_SINK_ASSETS']}/" \
+                    f"images/list_screen/avatar.jpeg"
+
+        TwoLineListItem:
+            text: "[size=24][b]Diana Marina[/b][/size]"
+            secondary_text: "diana@gmail.com"
+            pos_hint: {"center_y": .5}
+            divider: None
+            _no_ripple_effect: True
+
+    MDIconButton:
+        icon: "arrow-left"
+        md_bg_color: 0, 0, 0, .2
+        on_release: app.manager_screen.current = "menu"
+        pos:
+            root.width - self.width - dp(12), \
+            root.height - self.height - dp(12)

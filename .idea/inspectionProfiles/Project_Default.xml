@@ -1,0 +1,70 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="31">
+            <item index="0" class="java.lang.String" itemvalue="Python" />
+            <item index="1" class="java.lang.String" itemvalue="kivy_deps.sdl2" />
+            <item index="2" class="java.lang.String" itemvalue="kivy_deps.gstreamer" />
+            <item index="3" class="java.lang.String" itemvalue="pypiwin32" />
+            <item index="4" class="java.lang.String" itemvalue="kivy_deps.glew" />
+            <item index="5" class="java.lang.String" itemvalue="kivy" />
+            <item index="6" class="java.lang.String" itemvalue="pillow" />
+            <item index="7" class="java.lang.String" itemvalue="requests" />
+            <item index="8" class="java.lang.String" itemvalue="Pygments" />
+            <item index="9" class="java.lang.String" itemvalue="certifi" />
+            <item index="10" class="java.lang.String" itemvalue="docutils" />
+            <item index="11" class="java.lang.String" itemvalue="urllib3" />
+            <item index="12" class="java.lang.String" itemvalue="kivymd" />
+            <item index="13" class="java.lang.String" itemvalue="Pillow" />
+            <item index="14" class="java.lang.String" itemvalue="pyjnius" />
+            <item index="15" class="java.lang.String" itemvalue="autoapi" />
+            <item index="16" class="java.lang.String" itemvalue="watchdog" />
+            <item index="17" class="java.lang.String" itemvalue="monotonic" />
+            <item index="18" class="java.lang.String" itemvalue="asyncgui" />
+            <item index="19" class="java.lang.String" itemvalue="asynckivy" />
+            <item index="20" class="java.lang.String" itemvalue="akivymd" />
+            <item index="21" class="java.lang.String" itemvalue="firebase-admin" />
+            <item index="22" class="java.lang.String" itemvalue="multitasking" />
+            <item index="23" class="java.lang.String" itemvalue="pycryptodome" />
+            <item index="24" class="java.lang.String" itemvalue="firebase" />
+            <item index="25" class="java.lang.String" itemvalue="requests_toolbelt" />
+            <item index="26" class="java.lang.String" itemvalue="Kivy" />
+            <item index="27" class="java.lang.String" itemvalue="workdays" />
+            <item index="28" class="java.lang.String" itemvalue="qrcode" />
+            <item index="29" class="java.lang.String" itemvalue="xlwt" />
+            <item index="30" class="java.lang.String" itemvalue="fpdf" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="W191" />
+          <option value="E114" />
+          <option value="E501" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N806" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="src.View.FirebaseScreen.firebase_screen.View" />
+          <option value="property.settter" />
+          <option value="Controller.base_controller.BaseScreenController.model" />
+          <option value="Controller.base_controller.BaseScreenController.view" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

@@ -1,0 +1,46 @@
+<CardCall>
+    orientation: "vertical"
+
+    MDBoxLayout:
+        orientation: "vertical"
+        spacing: "6dp"
+        padding: 0, 0, "12dp", "8dp"
+        adaptive_height: True
+
+        MDLabel:
+            shorten: True
+            shorten_from: "right"
+            color: 1, 1, 1, 1
+            markup: True
+            adaptive_height: True
+            pos_hint: {"center_y": .1}
+            font_style: "Caption"
+            text:
+                f"[b]{root.name_caller}:[/b] [size=12][color=#cedbe6]" \
+                f"missed call"\
+                f"[/color][/size]"
+
+        MDIcon:
+            id: icon
+            icon: "phone-missed"
+            halign: "right"
+            opacity: .5
+            font_size: "18sp"
+
+        MDBoxLayout:
+            adaptive_height: True
+            spacing: "12dp"
+
+            FitImage:
+                source: "assets/images/card_screen/friends.jpg"
+                size_hint: None, None
+                size: "30dp", "30dp"
+                radius: self.height
+
+            MDLabel:
+                adaptive_height: True
+                text: "Friends"
+                font_size: "14sp"
+                pos_hint: {"center_y": .5}
+                color: 1, 1, 1, 1
+                opacity: .5

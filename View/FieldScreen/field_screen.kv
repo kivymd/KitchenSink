@@ -1,0 +1,29 @@
+#:import os os
+
+
+<FieldScreenView>
+
+    MDCarousel:
+        id: carousel
+        on_index: root.on_index(args[1])
+        on_slide_progress: root.do_animation_slide_content(*args)
+
+        OneScreen:
+
+        TwoScreen:
+            opacity: 0
+
+        ThirdScreen:
+            opacity: 0
+
+    Dots:
+        id: dots
+        y: "24dp"
+
+    MDIconButton:
+        id: back_button
+        icon: "arrow-left"
+        theme_text_color: "Custom"
+        pos: root.width - self.width - dp(12), root.height - self.height - dp(12)
+        md_bg_color: 0, 0, 0, .2
+        on_release: app.go_to_back_screen()

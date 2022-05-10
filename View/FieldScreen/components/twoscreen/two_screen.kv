@@ -1,0 +1,57 @@
+#:import get_hex_from_color kivy.utils.get_hex_from_color
+
+
+<TwoScreen>
+    md_bg_color: app.theme_cls.bg_dark
+
+    FitImage:
+        source: f"{os.environ['KITCHEN_SINK_ROOT']}/assets/images/field_screen/two_screen/bg.jpg"
+
+    Image:
+        source: f"{os.environ['KITCHEN_SINK_ROOT']}/assets/images/field_screen/two_screen/kivy-logo.png"
+        size_hint: None, .2
+        width: self.height
+        pos_hint: {"center_x": .5, "center_y": .8}
+
+    MDLabel:
+        text: f"Kivy [color={get_hex_from_color(app.theme_cls.primary_color)}]MD[/color]"
+        color: 1, 1, 1, 1
+        bold: True
+        markup: True
+        pos_hint: {"center_y": .65}
+        halign: "center"
+        font_style: "H4"
+
+    MDBoxLayout:
+        id: field_box
+        orientation: "vertical"
+        spacing: "12dp"
+        adaptive_height: True
+        size_hint_x: .6
+        pos_hint: {"center_x": .5, "center_y": .5}
+
+        MDTextField:
+            hint_text: "Email Address"
+            hint_text_color_normal: 1, 1, 1, 1
+            line_color_normal: 1, 1, 1, 1
+
+        MDTextField:
+            hint_text: "Password"
+            hint_text_color_normal: 1, 1, 1, 1
+            line_color_normal: 1, 1, 1, 1
+            text_color_normal: 1, 1, 1, 1
+
+        MDLabel:
+            text: "Forgot password?"
+            halign: "right"
+            font_style: "Caption"
+            color: 1, 1, 1, .5
+
+    MDRoundFlatIconButton:
+        icon: "send"
+        text: "[color=#ffffff]LOGIN WITH THIS ACCOUNT[/color]"
+        theme_text_color: "Custom"
+        line_color: 1, 1, 1, 1
+        icon_color: 1, 1, 1, 1
+        pos_hint: {"center_x": .5}
+        y: field_box.y - (self.height + dp(56))

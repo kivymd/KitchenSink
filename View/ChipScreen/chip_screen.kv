@@ -1,0 +1,152 @@
+#:import os os
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+
+
+<ChipLabel@MDLabel>
+    color: get_color_from_hex("#442c2e")
+    font_name:
+        f"{os.environ['KITCHEN_SINK_ASSETS']}/" \
+        f"fonts/Caviar-Dreams/CaviarDreams.ttf" \
+        if not self.bold else \
+        f"{os.environ['KITCHEN_SINK_ASSETS']}/" \
+        f"fonts/Caviar-Dreams/Caviar_Dreams_Bold.ttf"
+
+
+<ChipScreenView>
+
+    MDBoxLayout:
+        orientation: "vertical"
+
+        FitImage:
+            size_hint_y: .42
+            source:
+                f"{os.environ['KITCHEN_SINK_ASSETS']}/" \
+                f"images/chip_screen/image.jpg"
+
+        ScrollView:
+            size_hint_y: .58
+
+            MDList:
+                padding: "18dp"
+                spacing: "24dp"
+                md_bg_color: app.theme_cls.bg_normal
+
+                MDBoxLayout:
+                    adaptive_height: True
+                    spacing: "12dp"
+                    padding: 0, 0, 0, "12dp"
+
+                    FitImage:
+                        size_hint: None, None
+                        size: "56dp", "56dp"
+                        radius: self.height / 2
+                        source:
+                            f"{os.environ['KITCHEN_SINK_ASSETS']}/" \
+                            f"images/chip_screen/tshirtman-avatar.png"
+
+                    ChipLabel:
+                        text: "TSHIRTMAN"
+                        font_size: "18sp"
+
+                    ChipLabel:
+                        text: "$547"
+                        bold: True
+                        font_size: "26sp"
+                        halign: "right"
+
+                ChipLabel:
+                    text: "Flow Shirt Blouse"
+                    font_size: "26sp"
+                    bold: True
+
+                Widget:
+                    size_hint_y: None
+                    height: "12dp"
+
+                ChipLabel:
+                    font_size: "15sp"
+                    text:
+                        "A classic long-sleeved shirt will become stylish " \
+                        "and original if it is skillfully combined with " \
+                        "accessories - a scarf, a scarf, ornaments..."
+
+                Widget:
+                    size_hint_y: None
+                    height: "12dp"
+
+                ChipLabel:
+                    text: "MORE DETAILS"
+                    font_style: "H6"
+                    bold: True
+
+                MDSeparator:
+
+                ChipLabel:
+                    text: "Select Size"
+                    font_style: "H6"
+                    bold: True
+
+                ScrollView:
+                    size_hint_y: None
+                    height: chip_size_box.height
+                    bar_width: 0
+
+                    MDGridLayout:
+                        id: chip_size_box
+                        rows: 1
+                        adaptive_size: True
+                        spacing: "8dp"
+                        padding: "8dp"
+
+                MDSeparator:
+
+                ChipLabel:
+                    text: "Select Color"
+                    font_style: "H6"
+                    bold: True
+
+                ScrollView:
+                    size_hint_y: None
+                    height: chip_color_box.height
+                    bar_width: 0
+
+                    MDGridLayout:
+                        id: chip_color_box
+                        rows: 1
+                        adaptive_size: True
+                        spacing: "8dp"
+                        padding: "8dp"
+
+                        MDChip:
+                            text: "Blue"
+                            md_bg_color: get_color_from_hex("#9fccd9")
+                            _no_ripple_effect: True
+
+                        MDChip:
+                            text: "Brown"
+                            md_bg_color: get_color_from_hex("#8c6d5a")
+                            _no_ripple_effect: True
+
+                        MDChip:
+                            text: "Green"
+                            md_bg_color: get_color_from_hex("#6be899")
+                            _no_ripple_effect: True
+
+    MDIconButton:
+        icon: "close"
+        x: "6dp"
+        y: root.height - (self.height + dp(12))
+
+    MDIconButton:
+        icon: "cart-plus"
+        x: root.width - (self.width + back_button.width + dp(24))
+        y: root.height - (self.height + dp(12))
+        md_bg_color: 1, 1, 1, .8
+
+    MDIconButton:
+        id: back_button
+        icon: "arrow-left"
+        theme_text_color: "Custom"
+        pos: root.width - self.width - dp(12), root.height - self.height - dp(12)
+        md_bg_color: 1, 1, 1, .8
+        on_release: app.manager_screen.current = "menu"

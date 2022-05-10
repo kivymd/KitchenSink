@@ -1,0 +1,33 @@
+<CardProfile>
+    spacing: "8dp"
+
+    FitImage:
+        source: root.path_to_avatar
+        size_hint_y: .6
+        size_hint_x: None
+        width: self.height
+        radius: self.height
+        pos_hint: {"center_x": .5, "center_y": .5}
+
+    MDBoxLayout:
+        orientation: "vertical"
+        padding: 0, "24dp", 0, "24dp"
+        spacing: "8dp"
+
+        MDLabel:
+            text: root.name_user
+            shorten: True
+            shorten_from: "right"
+            color: 1, 1, 1, 1
+            bold: True
+
+        MDLabel:
+            text: root.date
+            color: 1, 1, 1, .3
+            font_style: "Caption"
+
+        MDLabel:
+            text: root.status
+            color: 1, 1, 1, .5
+            font_style: "Caption"
+            bold: True

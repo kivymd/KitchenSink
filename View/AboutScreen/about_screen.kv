@@ -1,0 +1,100 @@
+#:import os os
+#:import get_hex_from_color kivy.utils.get_hex_from_color
+#:import IconLeftWidget kivymd.uix.list.IconLeftWidget
+
+
+<ContactItem@OneLineAvatarListItem>
+    icon: ""
+    _txt_top_pad: "8dp"
+    _txt_bot_pad: "8dp"
+    height: "36dp"
+
+    IconLeftWidget:
+        icon: root.icon
+        user_font_size: "18sp"
+
+
+<AboutScreenView>
+
+    ScrollView:
+
+        MDList:
+            padding: "12dp"
+            spacing: "12dp"
+
+            MDTopAppBar:
+                title: "About"
+                md_bg_color: app.theme_cls.bg_dark
+                elevation: 12
+                opposite_colors: True
+                left_action_items:
+                    [["arrow-left", lambda x: app.go_to_back_screen()]]
+
+            MDBoxLayout:
+                spacing: "12dp"
+                size_hint_y: None
+                height: "72dp"
+
+                Image:
+                    size_hint: None, None
+                    size: "72dp", "72dp"
+                    source:
+                        f"{os.environ['KITCHEN_SINK_ROOT']}/" \
+                        f"assets/images/about_screen/kivymd-logo.png"
+
+                MDBoxLayout:
+                    orientation: "vertical"
+                    adaptive_height: True
+                    spacing: "8dp"
+                    pos_hint: {"center_y": .5}
+
+                    MDLabel:
+                        adaptive_height: True
+                        bold: True
+                        markup: True
+                        font_style: "H5"
+                        text:
+                            "Kivy[color={}]MD[/color]".format( \
+                            get_hex_from_color(app.theme_cls.primary_color) \
+                            )
+
+                    MDLabel:
+                        adaptive_height: True
+                        bold: True
+                        text: "Open source Python library"
+                        theme_text_color: "Hint"
+
+            MDSeparator:
+
+            MDLabel:
+                id: about_label
+                markup: True
+                adaptive_height: True
+                font_size: "13sp"
+
+            MDLabel:
+                adaptive_height: True
+                bold: True
+                markup: True
+                text: "Contaсts"
+                font_style: "H5"
+
+            MDBoxLayout:
+                adaptive_height: True
+                orientation: "vertical"
+
+                ContactItem:
+                    icon: "youtube"
+                    text: "[size=14]Official YouTube channel[/size]"
+
+                ContactItem:
+                    icon: "discord"
+                    text: "[size=14]Discord channel[/size]"
+
+                ContactItem:
+                    icon: "email"
+                    text: "[size=14]kivymd-library@yandex.com[/size]"
+
+            Widget:
+                size_hint_y: None
+                height: "72dp"
