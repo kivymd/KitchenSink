@@ -1,5 +1,6 @@
 import os
 
+from kivy.clock import Clock
 from kivy.lang import Builder
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.image import Image
@@ -13,11 +14,9 @@ from View.screens import screens
 
 class ManagerScreen(ScreenManager):
     dialog_wait = None
-    _screen_names = []  # уже инициализированные имена экранов
+    _screen_names = []
 
     def create_screen(self, name_screen, app):
-        """Создает и возвращает объект представления."""
-
         if name_screen not in self._screen_names:
             self._screen_names.append(name_screen)
             self.load_common_package(app, name_screen)
@@ -32,14 +31,8 @@ class ManagerScreen(ScreenManager):
             return view
 
     def load_common_package(self, app, name_screen) -> None:
-        """
-        Загружает компоненты интерфейса в зависимости текущего экрана
-        приложения.
-        """
-
         def _load_kv(path_to_kv):
             kv_loaded = False
-            # Если компоненты уже загружены.
             for loaded_path_kv in Builder.files:
                 if path_to_kv in loaded_path_kv:
                     kv_loaded = True
@@ -62,15 +55,17 @@ class ManagerScreen(ScreenManager):
             _load_kv(one_line_list_item_path)
 
     def switch_screen(self, screen_name: str) -> None:
-        """Переключает экраны приложения."""
+        def switch_screen(*args):
+            if screen_name not in self._screen_names:
+                self.open_dialog()
+                screen = self.create_screen(screen_name, MDApp.get_running_app())
+                self.add_screen(screen)
 
-        if screen_name not in self._screen_names:
-            self.open_dialog()
-            screen = self.create_screen(screen_name, MDApp.get_running_app())
-            self.add_screen(screen)
+            self.current = screen_name
+            self.dialog_wait.dismiss()
 
-        self.current = screen_name
-        self.dialog_wait.dismiss()
+        self.open_dialog()
+        Clock.schedule_once(switch_screen)
 
     def open_dialog(self) -> None:
         if not self.dialog_wait:
