@@ -26,4 +26,4 @@
         theme_text_color: "Custom"
         pos: root.width - self.width - dp(12), root.height - self.height - dp(12)
         md_bg_color: 0, 0, 0, .2
-        on_release: app.go_to_back_screen()
+        on_release: app.manager_screen.current = "menu"
