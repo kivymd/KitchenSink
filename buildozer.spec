@@ -40,8 +40,9 @@ android.numeric_version = 1
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
 requirements = python3, \
-               kivy==2.0.0, \
-               https://github.com/kivymd/KivyMD/archive/master.zip
+               kivy==2.1.0, \
+               https://github.com/kivymd/KivyMD/archive/master.zip, \
+               pillow
 
 # (str) Supported orientation (one of landscape, sensorLandscape, portrait or all)
 orientation = portrait
