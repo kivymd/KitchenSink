@@ -1,0 +1,25 @@
+#:import os os
+#:import SliverToolbar View.SliverScreen.components.toolbar.SliverToolbar
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+
+
+<SliverScreenView>
+
+    MDSliverAppbar:
+        toolbar_cls: SliverToolbar(manager_screen=app.manager_screen)
+
+        MDSliverAppbarHeader:
+
+            MDRelativeLayout:
+
+                FitImage:
+                    source:
+                        f"{os.environ['KITCHEN_SINK_ASSETS']}/" \
+                        f"images/sliver_screen/image.jpg"
+
+        MDSliverAppbarContent:
+            id: content
+            orientation: "vertical"
+            padding: "12dp"
+            spacing: "12dp"
+            adaptive_height: True
