@@ -1,5 +1,3 @@
-from typing import NoReturn
-
 from kivy.animation import Animation
 from kivy.core.window import Window
 
@@ -21,9 +19,7 @@ class SlideAnimatior:
             direction = "right"
         return direction
 
-    def do_animation_slide_content(
-        self, carousel: MDCarousel, progress_value: float
-    ):
+    def do_animation_slide_content(self, carousel: MDCarousel, progress_value: float):
         """
         Called when the user swipes on the screen (the moment the slides move).
         Animates the transparency of slides.
@@ -52,19 +48,17 @@ class SlideAnimatior:
             if carousel.previous_slide:
                 carousel.previous_slide.opacity = 0 + offset_value
 
-    def on_index(self, index: int) -> NoReturn:
+    def on_index(self, index: int) -> None:
         """
         Called when slides stop (after swipe). Animates screen switching dots.
         """
 
         for instance_dot in self.ids.dots.children:
             if instance_dot.index == index:
-                Animation(
-                    md_bg_color=self.theme_cls.primary_color, d=0.2
-                ).start(instance_dot)
+                Animation(md_bg_color=self.theme_cls.primary_color, d=0.2).start(
+                    instance_dot
+                )
             else:
                 Animation(
                     md_bg_color=self.theme_cls.disabled_hint_text_color, d=0.2
                 ).start(instance_dot)
-
-
