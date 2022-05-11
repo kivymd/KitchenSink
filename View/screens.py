@@ -6,4 +6,5 @@ screens = {
     "field": "FieldScreen.field_screen",
     "menu": "MenuScreen.menu_screen",
     "list": "ListScreen.list_screen",
+    "sliver": "SliverScreen.sliver_screen",
 }
