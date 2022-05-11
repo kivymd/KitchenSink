@@ -3,6 +3,7 @@ from kivymd.uix.screen import MDScreen
 
 from View.FieldScreen import OneScreen, TwoScreen, Dots  # NOQA
 from View.FieldScreen.components.thirdscreen.third_screen import ThirdScreen  # NOQA
+from View.common import RoundCard  # NOQA
 from View.slide_animatior import SlideAnimatior
 
 
