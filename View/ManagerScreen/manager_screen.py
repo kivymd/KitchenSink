@@ -64,8 +64,11 @@ class ManagerScreen(ScreenManager):
             self.current = screen_name
             self.dialog_wait.dismiss()
 
-        self.open_dialog()
-        Clock.schedule_once(switch_screen)
+        if screen_name not in self._screen_names:
+            self.open_dialog()
+            Clock.schedule_once(switch_screen)
+        else:
+            self.current = screen_name
 
     def open_dialog(self) -> None:
         if not self.dialog_wait:
