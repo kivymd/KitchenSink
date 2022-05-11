@@ -15,7 +15,9 @@ class ChipScreenView(MDScreen):
                 chip.bind(active=self.removes_marks_all_chips)
                 self.ids.chip_size_box.add_widget(chip)
 
-    def removes_marks_all_chips(self, selected_instance_chip, active_state: bool) -> None:
+    def removes_marks_all_chips(
+        self, selected_instance_chip, active_state: bool
+    ) -> None:
         for instance_chip in self.ids.chip_size_box.children:
             if instance_chip != selected_instance_chip:
                 instance_chip.active = False
