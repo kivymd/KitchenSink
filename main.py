@@ -2,14 +2,6 @@ import os
 import sys
 from pathlib import Path
 
-from kivy import Config
-
-from PIL import ImageGrab
-
-resolution = ImageGrab.grab().size
-Config.set("graphics", "height", resolution[1])
-Config.set("graphics", "width", "400")
-
 from kivymd.app import MDApp
 
 from View.ManagerScreen.manager_screen import ManagerScreen
