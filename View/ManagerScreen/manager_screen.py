@@ -2,7 +2,6 @@ import os
 
 from kivy.clock import Clock
 from kivy.lang import Builder
-from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.image import Image
 from kivy.uix.modalview import ModalView
 from kivy.uix.screenmanager import ScreenManager
@@ -72,15 +71,15 @@ class ManagerScreen(ScreenManager):
 
     def open_dialog(self) -> None:
         if not self.dialog_wait:
-            content = FloatLayout()
             image = Image(
                 source="assets/images/loading.gif",
                 size_hint=(0.15, 0.15),
                 pos_hint={"center_x": 0.5, "center_y": 0.5},
             )
-            content.add_widget(image)
-            self.dialog_wait = ModalView(background_color=(0, 0, 0, 0))
-            self.dialog_wait.add_widget(content)
+            self.dialog_wait = ModalView(
+                background="assets/images/modal-bg.png",
+            )
+            self.dialog_wait.add_widget(image)
         self.dialog_wait.open()
 
     def add_screen(self, view) -> None:
