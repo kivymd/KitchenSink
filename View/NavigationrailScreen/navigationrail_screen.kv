@@ -1,0 +1,106 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+#:set rail_bg_color get_color_from_hex("#fffcf4")
+#:set fab_button_bg_color get_color_from_hex("#b0f0d6")
+#:set selected_item_bg_color get_color_from_hex("#e7e4c0")
+
+
+<DrawerClickableItem@MDNavigationDrawerItem>
+    focus_color: selected_item_bg_color
+    unfocus_color: rail_bg_color
+
+
+<NavigationrailScreenView>
+
+    MDNavigationLayout:
+
+        ScreenManager:
+
+            MDScreen:
+
+                MDBoxLayout:
+                    orientation: "vertical"
+
+                    MDBoxLayout:
+                        adaptive_height: True
+                        md_bg_color: rail_bg_color
+                        padding: "12dp"
+
+                        MDLabel:
+                            text: "12:00"
+                            adaptive_height: True
+                            pos_hint: {"center_y": .5}
+
+                    MDBoxLayout:
+
+                        MDNavigationRail:
+                            id: navigation_rail
+                            md_bg_color: rail_bg_color
+                            selected_color_background: selected_item_bg_color
+                            ripple_color_item: selected_item_bg_color
+                            on_item_release: root.switch_screen(*args)
+
+                            MDNavigationRailMenuButton:
+                                on_release: nav_drawer.set_state("open")
+
+                            MDNavigationRailFabButton:
+
+                            MDNavigationRailItem:
+                                text: "Python"
+                                icon: "language-python"
+
+                            MDNavigationRailItem:
+                                text: "JavaScript"
+                                icon: "language-javascript"
+
+                            MDNavigationRailItem:
+                                text: "CPP"
+                                icon: "language-cpp"
+
+                            MDNavigationRailItem:
+                                text: "Git"
+                                icon: "git"
+
+                        ScreenManager:
+                            id: screen_manager
+                            transition:
+                                FadeTransition(duration=.2, clearcolor=app.theme_cls.bg_dark)
+
+    MDNavigationDrawer:
+        id: nav_drawer
+        radius: (0, 16, 16, 0)
+        md_bg_color: rail_bg_color
+        elevation: 12
+        width: "240dp"
+
+        MDNavigationDrawerMenu:
+
+            MDBoxLayout:
+                orientation: "vertical"
+                adaptive_height: True
+                spacing: "12dp"
+                padding: 0, 0, 0, "12dp"
+
+                MDIconButton:
+                    icon: "menu"
+
+                ExtendedButton:
+                    text: "Compose"
+                    icon: "pencil"
+
+            DrawerClickableItem:
+                text: "Python"
+                icon: "language-python"
+
+            DrawerClickableItem:
+                text: "JavaScript"
+                icon: "language-javascript"
+
+            DrawerClickableItem:
+                text: "CPP"
+                icon: "language-cpp"
+
+            DrawerClickableItem:
+                text: "Swift"
+                icon: "language-swift"
