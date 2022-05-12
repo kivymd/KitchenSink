@@ -8,7 +8,15 @@ from View.MenuScreen.componemts import MenuCard  # NOQA
 class MenuScreenView(MDScreen):
     def on_enter(self, *args) -> None:
         if not self.ids.menu_list.data:
-            for name_card in ["Field", "Card", "Button", "Chip", "List", "Sliver"]:
+            for name_card in [
+                "Field",
+                "Card",
+                "Button",
+                "Chip",
+                "List",
+                "Sliver",
+                "Rail",
+            ]:
                 self.ids.menu_list.data.append(
                     {
                         "viewclass": "MenuCard",
