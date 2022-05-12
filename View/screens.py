@@ -7,4 +7,5 @@ screens = {
     "menu": "MenuScreen.menu_screen",
     "list": "ListScreen.list_screen",
     "sliver": "SliverScreen.sliver_screen",
+    "rail": "NavigationrailScreen.navigationrail_screen",
 }
