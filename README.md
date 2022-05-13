@@ -1,5 +1,6 @@
 # KitchenSink
-### Demo application of the KivyMD library widgets
+
+### Demo application of the [KivyMD](https://github.com/kivymd/KivyMD) library widgets
 
 [![APK build](https://github.com/kivymd/KitchenSink/actions/workflows/main.yml/badge.svg)](https://github.com/kivymd/KitchenSink/actions/workflows/main.yml)
 
@@ -10,4 +11,6 @@
     >
 </p>
 
-### While this project is under development.
+These are collections of simple stylish and modern user interface design for mobile and desktop applications.
+
+### This project is under development.
