@@ -45,6 +45,8 @@
                                 on_release: nav_drawer.set_state("open")
 
                             MDNavigationRailFabButton:
+                                icon: "chevron-left"
+                                on_release: app.manager_screen.current = "menu"
 
                             MDNavigationRailItem:
                                 text: "Python"
