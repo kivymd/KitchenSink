@@ -1,0 +1,145 @@
+#:import os os
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:set root_color get_color_from_hex("#7d60f6")
+
+
+<ButtonScreenFloatingActionButton@MDFloatingActionButton>
+    md_bg_color: app.theme_cls.bg_dark
+    theme_text_color: "Custom"
+    text_color: get_color_from_hex("#49474c")
+    ripple_color: root_color
+
+
+<ButtonScreenMDTextField@MDTextField>
+    line_color_focus: root_color
+    text_color_focus: root_color
+    hint_text_color_focus: root_color
+    pos_hint: {"center_x": .5}
+
+
+<ButtonScreenSpacer@Widget>
+    size_hint_y: None
+    height: "24dp"
+
+
+<ButtonScreenOneScreen>
+
+    RelativeLayout:
+        id: front_box
+        size_hint_y: .65
+        radius: 24, 24, 0, 0
+
+        FitImage:
+            radius: front_box.radius
+            size_hint: None, None
+            size: front_box.size
+            source:
+                f"{os.environ['KITCHEN_SINK_ASSETS']}/" \
+                f"images/button_screen/bg.png"
+
+        MDBoxLayout:
+            id: box
+            orientation: "vertical"
+            padding: "24dp", "24dp", "24dp", "4dp"
+
+            MDLabel:
+                text: "Log-In"
+                adaptive_height: True
+                bold: True
+                font_style: "H3"
+                padding_y: "12dp"
+                color: root_color
+
+            ScrollView:
+                bar_width: 0
+
+                MDList:
+
+                    ButtonScreenMDTextField:
+                        hint_text: "Email"
+                        text: "Your Email ID"
+
+                    ButtonScreenMDTextField:
+                        hint_text: "Password"
+                        text: "Password"
+                        icon_right: "eye"
+                        icon_right_color_focus: root_color
+
+                    MDLabel:
+                        text: "Forget password?"
+                        adaptive_height: True
+                        font_size: "14sp"
+                        theme_text_color: "Hint"
+                        halign: "center"
+
+                    ButtonScreenSpacer:
+
+                    AnchorLayout:
+                        size_hint_y: None
+                        height: login_button.height
+                        anchor_x: "center"
+
+                        MDFillRoundFlatButton:
+                            id: login_button
+                            text: "LOGIN"
+                            size_hint_x: None
+                            width: box.width - box.padding[0] * 4
+                            md_bg_color: root_color
+
+                    ButtonScreenSpacer:
+
+                    MDLabel:
+                        text: "Don`t have an account? [b]Sign In[/b]"
+                        adaptive_height: True
+                        markup: True
+                        font_size: "14sp"
+                        theme_text_color: "Hint"
+                        halign: "center"
+
+                    ButtonScreenSpacer:
+
+                    MDBoxLayout:
+                        id: box_login_with
+                        spacing: "8dp"
+                        adaptive_height: True
+
+                        MDSeparator:
+                            pos_hint: {"center_y": .5}
+
+                        MDLabel:
+                            text: "Or login with"
+                            adaptive_size: True
+                            bold: True
+                            font_size: "14sp"
+                            theme_text_color: "Hint"
+
+                        MDSeparator:
+                            pos_hint: {"center_y": .5}
+
+                    AnchorLayout:
+                        size_hint_y: None
+                        height: bottom_box.height
+                        anchor_x: "center"
+
+                        MDBoxLayout:
+                            id: bottom_box
+                            spacing: "36dp"
+                            adaptive_size: True
+                            padding: "12dp", "24dp", 0, 0
+
+                            ButtonScreenFloatingActionButton:
+                                icon: "gmail"
+
+                            ButtonScreenFloatingActionButton:
+                                icon: "facebook"
+    Image:
+        id: image
+        size_hint: None, None
+        size: dp(320),  dp(320)
+        allow_stretch: True
+        keep_ratio: False
+        y: front_box.height- dp(90)
+        on_size: print(front_box.height-root.height)
+        source:
+            f"{os.environ['KITCHEN_SINK_ASSETS']}/" \
+            f"images/button_screen/image.png"
