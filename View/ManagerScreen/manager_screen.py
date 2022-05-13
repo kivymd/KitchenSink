@@ -49,9 +49,12 @@ class ManagerScreen(ScreenManager):
         one_line_list_item_path = os.path.join(
             "View", "common", "onelinelistitem", "one_line_list_item.kv"
         )
+        dots_path = os.path.join("View", "common", "dots", "dots.kv")
 
         if name_screen in ["list"]:
             _load_kv(one_line_list_item_path)
+        elif name_screen in ["button", "field"]:
+            _load_kv(dots_path)
 
     def switch_screen(self, screen_name: str) -> None:
         def switch_screen(*args):
