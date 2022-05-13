@@ -25,7 +25,7 @@ icon.filename = %(source.dir)s/assets/images/logo.png
 android.presplash_color = #000000
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py, gif, png, jpg, jpeg, ttf, kv, json, txt, md, po, mo, pot
+source.include_exts = py, gif, png, jpg, jpeg, ttf, kv, json, txt, md
 
 # (bool) Enable AndroidX support. Enable when 'android.gradle_dependencies'
 # contains an 'androidx' package, or any package from Kotlin source.
@@ -34,8 +34,6 @@ source.include_exts = py, gif, png, jpg, jpeg, ttf, kv, json, txt, md, po, mo, p
 
 # (str) Application versioning (method 2)
 version = 0.0.1
-
-android.numeric_version = 1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
@@ -48,7 +46,7 @@ requirements = python3, \
 orientation = portrait
 
 # (bool) Indicate if the application should be fullscreen or not
-fullscreen = 1
+fullscreen = 0
 
 # (int) Target Android API, should be as high as possible.
 android.api = 30
