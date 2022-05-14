@@ -2,7 +2,7 @@ import os
 
 from kivymd.uix.screen import MDScreen
 
-from View.SliverScreen.components.slivercard.sliver_card import SliverCard
+from View.SliverScreen.components import SliverCard
 
 
 class SliverScreenView(MDScreen):
