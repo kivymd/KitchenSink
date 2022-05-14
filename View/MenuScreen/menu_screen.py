@@ -16,6 +16,7 @@ class MenuScreenView(MDScreen):
                 "List",
                 "Sliver",
                 "Rail",
+                "Tile",
             ]:
                 self.ids.menu_list.data.append(
                     {
