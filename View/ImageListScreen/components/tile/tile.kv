@@ -1,0 +1,16 @@
+<ImageListScreenTile>
+    size_hint_y: None
+    height: "240dp"
+    radius: 24
+    box_radius: [0, 0, 24, 24]
+
+    MDIconButton:
+        icon: root.icon
+        theme_icon_color: "Custom"
+        icon_color: 1, 0, 0, 1
+        pos_hint: {"center_y": .5}
+
+    MDLabel:
+        text: root.text
+        bold: True
+        color: 1, 1, 1, 1

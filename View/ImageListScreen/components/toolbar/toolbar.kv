@@ -1,0 +1,31 @@
+<ImageListScreenToolbar>
+    size_hint_y: None
+    height: "140"
+    md_bg_color: app.theme_cls.primary_color
+    radius: [0, 0, 42, 0]
+    elevation: 12
+    padding: 0, 0, "120dp", 0
+
+    RelativeLayout:
+
+        MDBoxLayout:
+            size_hint: None, None
+            size: title.texture_size[0] + self.padding[2], "56dp"
+            padding: "8dp", 0, "120dp", 0
+            md_bg_color: 1, 1, 1, 1
+            radius: [0, self.height / 2, self.height / 2, 0]
+            pos_hint: {"center_y": .5}
+
+            MDIconButton:
+                icon: "arrow-left"
+                pos_hint: {"center_y": .5}
+                on_release: app.manager_screen.current = "menu"
+
+            MDLabel:
+                id: title
+                text: root.title
+                adaptive_size: True
+                bold: True
+                pos_hint: {"center_y": .5}
+                font_style: "H5"
+
