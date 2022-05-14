@@ -7,8 +7,8 @@ from View.ImageListScreen.components import ImageListScreenTile, ImageListScreen
 
 class ImageListScreenView(MDScreen):
     def on_enter(self, *args):
-        for i in range(6):
-            if not self.ids.grid_list.data:
+        if not self.ids.grid_list.data:
+            for i in range(6):
                 self.ids.grid_list.data.append(
                     {
                         "viewclass": "ImageListScreenTile",
