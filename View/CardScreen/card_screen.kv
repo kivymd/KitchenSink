@@ -34,43 +34,27 @@
             text: now.strftime("%H:%M:%S")
             font_size: "48"
 
-        ScrollView:
-            size_hint_y: None
-            height: root.height - (card_notification.height + dp(96))
-            bar_width: 0
+        MDBoxLayout:
+            adaptive_size: True
+            spacing: "12dp"
 
-            MDList:
+            MDBoxLayout:
+                id: card_box
+                orientation: "vertical"
+                adaptive_size: True
                 spacing: "12dp"
 
-                MDBoxLayout:
-                    adaptive_height: True
-                    spacing: "12dp"
-
-                    CardProfile:
-                        name_user: root.data_cards["profile"]["name_user"]
-                        date: root.data_cards["profile"]["date"]
-                        status: root.data_cards["profile"]["status"]
-                        radius: self.height / root.data_cards["profile"]["radius"]
-                        path_to_avatar:
-                            os.path.join( \
-                            os.environ['KITCHEN_SINK_ASSETS'], \
-                            root.data_cards["profile"]["avatar"])
-                        md_bg_color:
-                            get_color_from_hex(root.data_cards["profile"]["card_color"])
-
-                    CardMessage:
-                        id: card_message
-                        name_user: root.data_cards["message"]["name_user"]
-                        message: root.data_cards["message"]["message"]
-                        date: root.data_cards["message"]["date"]
-                        radius: self.height / root.data_cards["message"]["radius"]
-                        padding: "12dp"
-                        path_to_avatar:
-                            os.path.join( \
-                            os.environ['KITCHEN_SINK_ASSETS'], \
-                            root.data_cards["message"]["avatar"])
-                        md_bg_color:
-                            get_color_from_hex(root.data_cards["message"]["card_color"])
+                CardProfile:
+                    name_user: root.data_cards["profile"]["name_user"]
+                    date: root.data_cards["profile"]["date"]
+                    status: root.data_cards["profile"]["status"]
+                    radius: self.height / root.data_cards["profile"]["radius"]
+                    path_to_avatar:
+                        os.path.join( \
+                        os.environ['KITCHEN_SINK_ASSETS'], \
+                        root.data_cards["profile"]["avatar"])
+                    md_bg_color:
+                        get_color_from_hex(root.data_cards["profile"]["card_color"])
 
                 CardCall:
                     name_caller: root.data_cards["call"]["name_user"]
@@ -85,10 +69,25 @@
                     radius: self.height / root.data_cards["profile"]["radius"]
                     path_to_avatar:
                         os.path.join( \
-                        os.environ['KITCHEN_SINK_ROOT'],
+                        os.environ['KITCHEN_SINK_ASSETS'],
                         root.data_cards["message"]["avatar"])
                     md_bg_color:
                         get_color_from_hex(root.data_cards["profile"]["card_color"])
+
+            CardMessage:
+                size_hint_y: None
+                height: card_box.height
+                name_user: root.data_cards["message"]["name_user"]
+                message: root.data_cards["message"]["message"]
+                date: root.data_cards["message"]["date"]
+                radius: self.height / root.data_cards["message"]["radius"]
+                padding: "12dp"
+                path_to_avatar:
+                    os.path.join( \
+                    os.environ['KITCHEN_SINK_ASSETS'], \
+                    root.data_cards["message"]["avatar"])
+                md_bg_color:
+                    get_color_from_hex(root.data_cards["message"]["card_color"])
 
         Widget:
 
