@@ -28,15 +28,16 @@
         CardScreenLabel:
             id: time
             text: today.strftime("%b-%d-%Y")
-            font_size: "24"
+            font_size: "18sp"
 
         CardScreenLabel:
             text: now.strftime("%H:%M:%S")
-            font_size: "48"
+            font_size: "28sp"
 
         MDBoxLayout:
             adaptive_size: True
             spacing: "12dp"
+            padding: 0, "12dp", 0, 0
 
             MDBoxLayout:
                 id: card_box
@@ -45,69 +46,58 @@
                 spacing: "12dp"
 
                 CardProfile:
-                    name_user: root.data_cards["profile"]["name_user"]
-                    date: root.data_cards["profile"]["date"]
-                    status: root.data_cards["profile"]["status"]
-                    radius: self.height / root.data_cards["profile"]["radius"]
+                    name_user: "Rachel"
+                    date: "2 weeks ago"
+                    status: "Chatted"
+                    radius: [int(self.height / 2),]
+                    md_bg_color: get_color_from_hex("#1e4974")
                     path_to_avatar:
-                        os.path.join( \
-                        os.environ['KITCHEN_SINK_ASSETS'], \
-                        root.data_cards["profile"]["avatar"])
-                    md_bg_color:
-                        get_color_from_hex(root.data_cards["profile"]["card_color"])
+                        f"{os.environ['KITCHEN_SINK_ASSETS']}/" \
+                        f"images/card_screen/avatar-profile.jpg"
 
                 CardCall:
-                    name_caller: root.data_cards["call"]["name_user"]
-                    radius: self.height / root.data_cards["call"]["radius"]
-                    md_bg_color:
-                        get_color_from_hex(root.data_cards["message"]["card_color"])
+                    name_caller: "Rachel"
+                    radius: [int(self.height / 4),]
+                    md_bg_color: get_color_from_hex("#1e4974")
 
                 CardProfile:
-                    name_user: root.data_cards["message"]["name_user"].split()[0]
-                    date: root.data_cards["profile"]["date"]
-                    status: root.data_cards["profile"]["status"]
-                    radius: self.height / root.data_cards["profile"]["radius"]
+                    name_user: "Monica"
+                    date: "2 weeks ago"
+                    status: "Chatted"
+                    radius: [int(self.height / 2),]
+                    md_bg_color: get_color_from_hex("#1e4974")
                     path_to_avatar:
-                        os.path.join( \
-                        os.environ['KITCHEN_SINK_ASSETS'],
-                        root.data_cards["message"]["avatar"])
-                    md_bg_color:
-                        get_color_from_hex(root.data_cards["profile"]["card_color"])
+                        f"{os.environ['KITCHEN_SINK_ASSETS']}/" \
+                        f"images/card_screen/avatar-message.jpg"
 
             CardMessage:
                 size_hint_y: None
                 height: card_box.height
-                name_user: root.data_cards["message"]["name_user"]
-                message: root.data_cards["message"]["message"]
-                date: root.data_cards["message"]["date"]
-                radius: self.height / root.data_cards["message"]["radius"]
+                name_user: "Monica Geller"
+                message: "I`m making a lasagna for dinner"
+                date: "1 hour ago"
+                radius: [int(self.height / 10),]
                 padding: "12dp"
+                md_bg_color: get_color_from_hex("#3b7fad")
                 path_to_avatar:
-                    os.path.join( \
-                    os.environ['KITCHEN_SINK_ASSETS'], \
-                    root.data_cards["message"]["avatar"])
-                md_bg_color:
-                    get_color_from_hex(root.data_cards["message"]["card_color"])
+                    f"{os.environ['KITCHEN_SINK_ASSETS']}/" \
+                    f"images/card_screen/avatar-message.jpg"
 
         Widget:
 
     CardNotification:
         id: card_notification
-        radius: self.height / root.data_cards["message"]["radius"]
+        radius: [int(self.height / 10),]
         pos_hint: {"center_x": .5}
         padding: 0
-        text_top: root.data_cards["notification"]["text_top"]
-        icon_top: root.data_cards["notification"]["icon_top"]
-        text_bottom: root.data_cards["notification"]["text_bottom"]
-        icon_bottom: root.data_cards["notification"]["icon_bottom"]
-        secondary_text_bottom:
-            root.data_cards["notification"]["secondary_text_bottom"]
-        secondary_text_top:
-            root.data_cards["notification"]["secondary_text_top"]
-        icon_color:
-            get_color_from_hex(root.data_cards["notification"]["icon_color"])
-        md_bg_color:
-            get_color_from_hex(root.data_cards["notification"]["card_color"])
+        text_top: "New photos added • [size=12]5m[/size]"
+        icon_top: "email"
+        text_bottom: "Megan Ono • [size=12]5m[/size]"
+        icon_bottom: "image"
+        secondary_text_bottom: "How was your trip?"
+        secondary_text_top: "Oregon Coast"
+        icon_color: get_color_from_hex("#1e4974")
+        md_bg_color: get_color_from_hex("#5f9acc")
 
     MDIconButton:
         icon: "arrow-left"
