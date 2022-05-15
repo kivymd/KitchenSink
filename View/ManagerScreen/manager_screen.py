@@ -5,8 +5,10 @@ from kivy.lang import Builder
 from kivy.uix.image import Image
 from kivy.uix.modalview import ModalView
 from kivy.uix.screenmanager import ScreenManager
+from kivy.utils import get_color_from_hex
 
 from kivymd.app import MDApp
+from kivymd.utils.set_bars_colors import set_bars_colors
 
 from View.screens import screens
 
@@ -15,13 +17,40 @@ class ManagerScreen(ScreenManager):
     dialog_wait = None
     _screen_names = []
 
-    def create_screen(self, name_screen, app):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.app = MDApp.get_running_app()
+
+    def on_current(self, *args):
+        super().on_current(*args)
+        self.set_bars_colors(self.app.theme_cls, self.current)
+
+    def set_bars_colors(self, instance_theme_cls, name_screen: str) -> None:
+        colors = {
+            "menu": {
+                "status_bar_color": instance_theme_cls.primary_color,
+                "navigation_bar_color": instance_theme_cls.bg_normal,
+            },
+            "rail": {
+                "status_bar_color": get_color_from_hex("#fffcf4"),
+                "navigation_bar_color": get_color_from_hex("#fffcf4"),
+            },
+        }
+
+        if name_screen in colors:
+            set_bars_colors(
+                colors[name_screen]["status_bar_color"],
+                colors[name_screen]["navigation_bar_color"],
+                "Light" if instance_theme_cls.theme_style == "Dark" else "Dark",
+            )
+
+    def create_screen(self, name_screen):
         if name_screen not in self._screen_names:
             self._screen_names.append(name_screen)
-            self.load_common_package(app, name_screen)
+            self.load_common_package(name_screen)
             exec(f"import View.{screens[name_screen]}")
-            app.load_all_kv_files(
-                os.path.join(app.directory, "View", screens[name_screen].split(".")[0])
+            self.app.load_all_kv_files(
+                os.path.join(self.app.directory, "View", screens[name_screen].split(".")[0])
             )
             view = eval(
                 f'View.{screens[name_screen]}.{screens[name_screen].split(".")[0]}View()'
@@ -29,7 +58,7 @@ class ManagerScreen(ScreenManager):
             view.name = name_screen
             return view
 
-    def load_common_package(self, app, name_screen) -> None:
+    def load_common_package(self, name_screen) -> None:
         def _load_kv(path_to_kv):
             kv_loaded = False
             for loaded_path_kv in Builder.files:
@@ -60,7 +89,7 @@ class ManagerScreen(ScreenManager):
         def switch_screen(*args):
             if screen_name not in self._screen_names:
                 self.open_dialog()
-                screen = self.create_screen(screen_name, MDApp.get_running_app())
+                screen = self.create_screen(screen_name)
                 self.add_screen(screen)
 
             self.current = screen_name
