@@ -24,7 +24,7 @@ class KitchenSink(MDApp):
         self.manager_screen = ManagerScreen()
 
     def build(self) -> ManagerScreen:
-        self.manager_screen.add_widget(self.manager_screen.create_screen("menu", self))
+        self.manager_screen.add_widget(self.manager_screen.create_screen("menu"))
         return self.manager_screen
 
 
