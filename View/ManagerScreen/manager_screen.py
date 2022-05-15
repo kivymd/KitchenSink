@@ -9,6 +9,7 @@ from kivy.utils import get_color_from_hex
 
 from kivymd.app import MDApp
 from kivymd.utils.set_bars_colors import set_bars_colors
+from kivymd.color_definitions import colors
 
 from View.screens import screens
 
@@ -26,8 +27,52 @@ class ManagerScreen(ScreenManager):
         self.set_bars_colors(self.app.theme_cls, self.current)
 
     def set_bars_colors(self, instance_theme_cls, name_screen: str) -> None:
-        colors = {
+        panel_colors = {
             "menu": {
+                "status_bar_color": instance_theme_cls.primary_color,
+                "navigation_bar_color": instance_theme_cls.bg_normal,
+            },
+            "button": {
+                "status_bar_color": get_color_from_hex("#b88bf8"),
+                "navigation_bar_color": get_color_from_hex("#b88bf8"),
+            },
+            "button_0": {
+                "status_bar_color": get_color_from_hex("#b88bf8"),
+                "navigation_bar_color": get_color_from_hex("#b88bf8"),
+            },
+            "button_1": {
+                "status_bar_color": get_color_from_hex(colors["Green"]["800"]),
+                "navigation_bar_color": get_color_from_hex(colors["Green"]["800"]),
+            },
+            "field": {
+                "status_bar_color": instance_theme_cls.primary_color,
+                "navigation_bar_color": instance_theme_cls.bg_normal,
+            },
+            "field_0": {
+                "status_bar_color": instance_theme_cls.primary_color,
+                "navigation_bar_color": instance_theme_cls.bg_normal,
+            },
+            "field_1": {
+                "status_bar_color": instance_theme_cls.primary_color,
+                "navigation_bar_color": instance_theme_cls.primary_color,
+            },
+            "field_2": {
+                "status_bar_color": instance_theme_cls.bg_normal,
+                "navigation_bar_color": instance_theme_cls.bg_normal,
+            },
+            "chip": {
+                "status_bar_color": instance_theme_cls.bg_normal,
+                "navigation_bar_color": instance_theme_cls.bg_normal,
+            },
+            "list": {
+                "status_bar_color": instance_theme_cls.bg_normal,
+                "navigation_bar_color": instance_theme_cls.bg_normal,
+            },
+            "sliver": {
+                "status_bar_color": get_color_from_hex("#90d1f0"),
+                "navigation_bar_color": instance_theme_cls.bg_normal,
+            },
+            "tile": {
                 "status_bar_color": instance_theme_cls.primary_color,
                 "navigation_bar_color": instance_theme_cls.bg_normal,
             },
@@ -37,10 +82,10 @@ class ManagerScreen(ScreenManager):
             },
         }
 
-        if name_screen in colors:
+        if name_screen in panel_colors:
             set_bars_colors(
-                colors[name_screen]["status_bar_color"],
-                colors[name_screen]["navigation_bar_color"],
+                panel_colors[name_screen]["status_bar_color"],
+                panel_colors[name_screen]["navigation_bar_color"],
                 "Light" if instance_theme_cls.theme_style == "Dark" else "Dark",
             )
 
