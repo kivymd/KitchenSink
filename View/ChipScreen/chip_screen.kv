@@ -80,17 +80,11 @@
                     font_style: "H6"
                     bold: True
 
-                ScrollView:
-                    size_hint_y: None
-                    height: chip_size_box.height
-                    bar_width: 0
-
-                    MDGridLayout:
-                        id: chip_size_box
-                        rows: 1
-                        adaptive_size: True
-                        spacing: "8dp"
-                        padding: "8dp"
+                MDBoxLayout:
+                    id: chip_size_box
+                    adaptive_size: True
+                    spacing: "8dp"
+                    padding: "8dp"
 
                 MDSeparator:
 
@@ -99,32 +93,26 @@
                     font_style: "H6"
                     bold: True
 
-                ScrollView:
-                    size_hint_y: None
-                    height: chip_color_box.height
-                    bar_width: 0
+                MDBoxLayout:
+                    rows: 1
+                    adaptive_size: True
+                    spacing: "8dp"
+                    padding: "8dp"
 
-                    MDGridLayout:
-                        id: chip_color_box
-                        rows: 1
-                        adaptive_size: True
-                        spacing: "8dp"
-                        padding: "8dp"
+                    MDChip:
+                        text: "Blue"
+                        md_bg_color: get_color_from_hex("#9fccd9")
+                        _no_ripple_effect: True
 
-                        MDChip:
-                            text: "Blue"
-                            md_bg_color: get_color_from_hex("#9fccd9")
-                            _no_ripple_effect: True
+                    MDChip:
+                        text: "Brown"
+                        md_bg_color: get_color_from_hex("#8c6d5a")
+                        _no_ripple_effect: True
 
-                        MDChip:
-                            text: "Brown"
-                            md_bg_color: get_color_from_hex("#8c6d5a")
-                            _no_ripple_effect: True
-
-                        MDChip:
-                            text: "Green"
-                            md_bg_color: get_color_from_hex("#6be899")
-                            _no_ripple_effect: True
+                    MDChip:
+                        text: "Green"
+                        md_bg_color: get_color_from_hex("#6be899")
+                        _no_ripple_effect: True
 
     MDIconButton:
         icon: "close"
