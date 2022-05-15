@@ -25,7 +25,7 @@ class CardScreenView(MDScreen):
                 "message": "I`m making a lasagna for dinner",
                 "avatar": "images/card_screen/avatar-message.jpg",
                 "card_color": "#3b7fad",
-                "radius": 8,
+                "radius": 10,
             },
             "call": {"name_user": "Rachel", "radius": 4, "card_color": "#1e4974"},
             "notification": {
