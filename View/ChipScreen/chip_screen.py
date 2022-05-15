@@ -9,7 +9,7 @@ class ChipScreenView(MDScreen):
             self.create_chips_size()
 
     def create_chips_size(self):
-        for i in range(2, 18):
+        for i in range(2, 10):
             if not i % 2:
                 chip = CustomChip(text=f"{('0' if i < 10 else '') + str(i)}")
                 chip.bind(active=self.removes_marks_all_chips)
