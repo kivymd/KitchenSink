@@ -5,8 +5,10 @@
 
     MDCarousel:
         id: carousel
-        on_index: root.on_index(args[1])
         on_slide_progress: root.do_animation_slide_content(*args)
+        on_index:
+            root.on_index(args[1])
+            app.manager_screen.set_bars_colors(app.theme_cls, f"field_{args[1]}")
 
         OneScreen:
 
