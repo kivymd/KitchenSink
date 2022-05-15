@@ -2,50 +2,63 @@
 
 
 <CardMessage>
-    orientation: "vertical"
-    spacing: "8dp"
-
-    MDLabel:
-        adaptive_height: True
-        -text_size: root.width - (root.padding[0] + dp(12)), dp(40)
-        color: 1, 1, 1, .5
-        font_size: "12sp"
-        markup: True
-        pos_hint: {"top": 1}
-        text:
-            f"[color={get_hex_from_color(get_color_from_hex('#cedbe6'))}]" \
-            f"{root.message}" \
-            f"[/color]" \
-            f" {root.date}"
 
     MDBoxLayout:
-        adaptive_height: True
+        orientation: "vertical"
         spacing: "8dp"
 
-        FitImage:
-            id: avatar
-            size_hint: None, None
-            height: "32dp"
-            width: self.height
-            source: root.path_to_avatar
-            radius: self.height / 2
+        MDLabel:
+            id: message
+            adaptive_height: True
+            -text_size: root.width - (root.padding[0] + dp(12)), dp(40)
+            color: 1, 1, 1, .5
+            font_size: "12sp"
+            markup: True
+            pos_hint: {"top": 1}
+            text:
+                f"[color={get_hex_from_color(get_color_from_hex('#cedbe6'))}]" \
+                f"{root.message}" \
+                f"[/color]" \
+                f" {root.date}"
 
         MDBoxLayout:
+            id: bottom_box
             orientation: "vertical"
-            spacing: "12dp"
             adaptive_height: True
+            spacing: "8dp"
 
-            MDIcon:
-                icon: "check-circle-outline"
-                theme_text_color: "Custom"
-                text_color: get_color_from_hex("#67b57d")
-                font_size: "14sp"
-
-            MDLabel:
-                text: root.name_user
-                font_style: "Caption"
+            MDBoxLayout:
+                id: name_box
+                spacing: "12dp"
                 adaptive_height: True
-                color: 1, 1, 1, 1
 
+                MDIcon:
+                    icon: "check-circle-outline"
+                    theme_text_color: "Custom"
+                    text_color: get_color_from_hex("#67b57d")
+                    font_size: "14sp"
 
+                MDLabel:
+                    text: root.name_user
+                    font_style: "Caption"
+                    adaptive_height: True
+                    color: 1, 1, 1, 1
 
+            FitImage:
+                id: avatar
+                size_hint: None, None
+                width: root.width - dp(24)
+                source: root.path_to_avatar
+                radius: [12, 12] + root.radius[-2:]
+                pos_hint: {"center_x": .5}
+                height:
+                    root.height - ( \
+                    name_box.height \
+                    + message.height \
+                    + root.spacing * 2 \
+                    + bottom_box.spacing \
+                    + name_box.spacing * 2 \
+                    + dp(12) \
+                    )
+
+        Widget:
