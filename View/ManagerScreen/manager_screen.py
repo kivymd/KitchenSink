@@ -40,8 +40,8 @@ class ManagerScreen(ScreenManager):
                 "navigation_bar_color": primary_color,
             },
             "button": {
-                "status_bar_color": get_color_from_hex("#5f9acc"),
-                "navigation_bar_color": get_color_from_hex("#5f9acc"),
+                "status_bar_color": get_color_from_hex("#b88bf8"),
+                "navigation_bar_color": get_color_from_hex("#b88bf8"),
             },
             "button_0": {
                 "status_bar_color": get_color_from_hex("#b88bf8"),
