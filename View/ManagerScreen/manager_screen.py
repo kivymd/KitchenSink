@@ -34,58 +34,72 @@ class ManagerScreen(ScreenManager):
             "menu": {
                 "status_bar_color": primary_color,
                 "navigation_bar_color": bg_normal,
+                "navigation_icon_color": "Light",
             },
             "card": {
                 "status_bar_color": primary_color,
                 "navigation_bar_color": primary_color,
+                "navigation_icon_color": "Light",
             },
             "button": {
                 "status_bar_color": get_color_from_hex("#b88bf8"),
                 "navigation_bar_color": get_color_from_hex("#b88bf8"),
+                "navigation_icon_color": "Light",
             },
             "button_0": {
                 "status_bar_color": get_color_from_hex("#b88bf8"),
                 "navigation_bar_color": get_color_from_hex("#b88bf8"),
+                "navigation_icon_color": "Light",
             },
             "button_1": {
                 "status_bar_color": get_color_from_hex(colors["Green"]["800"]),
                 "navigation_bar_color": get_color_from_hex(colors["Green"]["800"]),
+                "navigation_icon_color": "Light",
             },
             "field": {
                 "status_bar_color": primary_color,
                 "navigation_bar_color": bg_normal,
+                "navigation_icon_color": "Light",
             },
             "field_0": {
                 "status_bar_color": primary_color,
                 "navigation_bar_color": bg_normal,
+                "navigation_icon_color": "Light",
             },
             "field_1": {
                 "status_bar_color": primary_color,
                 "navigation_bar_color": primary_color,
+                "navigation_icon_color": "Light",
             },
             "field_2": {
                 "status_bar_color": bg_normal,
                 "navigation_bar_color": bg_normal,
+                "navigation_icon_color": "Dark",
             },
             "chip": {
                 "status_bar_color": bg_normal,
                 "navigation_bar_color": bg_normal,
+                "navigation_icon_color": "Dark",
             },
             "list": {
                 "status_bar_color": bg_normal,
                 "navigation_bar_color": bg_normal,
+                "navigation_icon_color": "Dark",
             },
             "sliver": {
                 "status_bar_color": get_color_from_hex("#90d1f0"),
                 "navigation_bar_color": bg_normal,
+                "navigation_icon_color": "Dark",
             },
             "tile": {
                 "status_bar_color": primary_color,
                 "navigation_bar_color": bg_normal,
+                "navigation_icon_color": "Light",
             },
             "rail": {
                 "status_bar_color": get_color_from_hex("#fffcf4"),
                 "navigation_bar_color": get_color_from_hex("#fffcf4"),
+                "navigation_icon_color": "Dark",
             },
         }
 
@@ -93,7 +107,7 @@ class ManagerScreen(ScreenManager):
             set_bars_colors(
                 panel_colors[name_screen]["status_bar_color"],
                 panel_colors[name_screen]["navigation_bar_color"],
-                "Light" if instance_theme_cls.theme_style == "Dark" else "Dark",
+                panel_colors[name_screen]["navigation_icon_color"],
             )
 
     def create_screen(self, name_screen):
