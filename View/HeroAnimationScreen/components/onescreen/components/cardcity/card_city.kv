@@ -1,0 +1,20 @@
+#:import Window kivy.core.window.Window
+
+
+<CityCard>
+
+    MDSmartTile:
+        id: tile
+        radius: [24,]
+        box_radius: 0, 0, 24, 24
+        box_color: 0, 0, 0, .5
+        source: root.source
+        size_hint: None, None
+        size: root.size
+        mipmap: True
+
+        MDLabel:
+            text: root.tag
+            bold: True
+            font_style: "H6"
+            opposite_colors: True

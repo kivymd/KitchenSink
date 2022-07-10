@@ -1,0 +1,20 @@
+<OneScreenView>
+
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDTopAppBar:
+            id: toolbar
+            title: "Travel"
+            md_bg_color: "white"
+            specific_text_color: "black"
+            left_action_items: [["chevron-left", lambda x: root.back_to_menu()]]
+
+        ScrollView:
+
+            MDGridLayout:
+                id: box
+                cols: 2
+                spacing: "12dp"
+                padding: "12dp"
+                adaptive_height: True

@@ -1,0 +1,81 @@
+<TwoScreenView>
+    md_bg_color: "white"
+    hero_to: hero_to
+
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDHeroTo:
+            id: hero_to
+            size_hint: 1, None
+            height: "200dp"
+
+        ScrollView:
+
+            MDList:
+                padding: "24dp", 0, "24dp", 0
+
+                MDLabel:
+                    text: "Description"
+                    font_style: "H5"
+                    bold: True
+                    adaptive_height: True
+                    padding_y: "24dp"
+
+                MDLabel:
+                    text:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing " \
+                        "elit, sed do eiusmod tempor incididunt ut labore " \
+                        "et dolore magna aliqua.  Ut enim ad minim veniam, " \
+                        "quis nostrud exercitation ullamco laboris nisi ut " \
+                        "aliquip ex ea commodo consequat. Duis aute irure " \
+                        "dolor in reprehenderit in voluptate velit esse " \
+                        "cillum dolore eu fugiat nulla pariatur.  Excepteur " \
+                        "sint occaecat cupidat non proident, sunt in culpa " \
+                        "qui officia deserunt molli anim id est laborum."
+                    adaptive_height: True
+
+                MDLabel:
+                    text: "Previews"
+                    font_style: "H5"
+                    bold: True
+                    adaptive_height: True
+                    padding_y: "24dp"
+
+                MDBoxLayout:
+                    adaptive_height: True
+
+                    MDRelativeLayout:
+                        id: previews_box
+                        size_hint_y: None
+                        height: "56dp"
+
+                    MDLabel:
+                        text: "View all"
+                        bold: True
+                        halign: "right"
+                        theme_text_color: "Custom"
+                        text_color: "blue"
+
+                MDLabel:
+                    text: "Others Places"
+                    font_style: "H5"
+                    bold: True
+                    adaptive_height: True
+                    padding_y: "36dp"
+
+    MDIconButton:
+        icon: "close"
+        md_bg_color: 1, 1, 1, .6
+        x: 12
+        pos_hint: {"top": .99}
+        on_release: root.on_tap_button_close()
+
+    MDIconButton:
+        icon: "heart"
+        md_bg_color: 1, 1, 1, 1
+        theme_icon_color: "Custom"
+        icon_color: "red"
+        x: root.width - (self.width + dp(12))
+        pos_hint: {"top": .99}
+        on_release: root.on_tap_button_close()
