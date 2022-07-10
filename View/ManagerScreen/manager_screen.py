@@ -101,6 +101,11 @@ class ManagerScreen(ScreenManager):
                 "navigation_bar_color": get_color_from_hex("#fffcf4"),
                 "navigation_icon_color": "Dark",
             },
+            "hero": {
+                "status_bar_color": primary_color,
+                "navigation_bar_color": bg_normal,
+                "navigation_icon_color": "Light",
+            },
         }
 
         if name_screen in panel_colors:
