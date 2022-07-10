@@ -9,4 +9,5 @@ screens = {
     "sliver": "SliverScreen.sliver_screen",
     "rail": "NavigationrailScreen.navigationrail_screen",
     "tile": "ImageListScreen.imagelist_screen",
+    "hero": "HeroAnimationScreen.hero_animation_screen",
 }
