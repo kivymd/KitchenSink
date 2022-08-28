@@ -4,7 +4,7 @@ from kivy.clock import Clock
 from kivy.lang import Builder
 from kivy.uix.image import Image
 from kivy.uix.modalview import ModalView
-from kivy.uix.screenmanager import ScreenManager
+from kivy.uix.screenmanager import ScreenManager, NoTransition
 from kivy.utils import get_color_from_hex
 
 from kivymd.app import MDApp
@@ -21,6 +21,7 @@ class ManagerScreen(ScreenManager):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.app = MDApp.get_running_app()
+        self.transition = NoTransition()
 
     def on_current(self, *args):
         super().on_current(*args)
