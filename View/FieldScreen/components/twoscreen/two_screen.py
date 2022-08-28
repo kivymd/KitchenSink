@@ -1,6 +1,6 @@
 from kivymd.uix.screen import MDScreen
-from kivymd.uix.templates import StencilWidget
+from kivymd.uix.behaviors import StencilBehavior
 
 
-class TwoScreen(MDScreen, StencilWidget):
+class TwoScreen(MDScreen, StencilBehavior):
     pass
