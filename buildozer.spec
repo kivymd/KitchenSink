@@ -47,7 +47,7 @@ orientation = portrait
 fullscreen = 0
 
 # (int) Target Android API, should be as high as possible.
-android.api = 31
+# android.api = 31
 
 # (bool) If True, then skip trying to update the Android sdk
 # This can be useful to avoid excess Internet downloads or save time
@@ -63,10 +63,13 @@ android.accept_sdk_license = True
 # (str) The Android arch to build for, choices: armeabi-v7a, arm64-v8a, x86, x86_64
 android.archs = armeabi-v7a
 
+# (bool) enables Android auto backup feature (Android API >=23)
+android.allow_backup = True
+
 android.release_artifact = apk
 
 # (str) python-for-android branch to use, defaults to master
-p4a.branch = develop
+# p4a.branch = develop
 
 [buildozer]
 
