@@ -38,7 +38,7 @@ version = 0.0.1
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
 requirements = python3, \
-               kivy==2.1.0, \
+               kivy==master, \
                https://github.com/kivymd/KivyMD/archive/master.zip
 # (str) Supported orientation (one of landscape, sensorLandscape, portrait or all)
 orientation = portrait
@@ -63,10 +63,7 @@ android.accept_sdk_license = True
 # (str) The Android arch to build for, choices: armeabi-v7a, arm64-v8a, x86, x86_64
 android.archs = armeabi-v7a
 
-# (bool) enables Android auto backup feature (Android API >=23)
-android.allow_backup = True
-
-android.release_artifact = apk
+# android.release_artifact = apk
 
 # (str) python-for-android branch to use, defaults to master
 # p4a.branch = develop
