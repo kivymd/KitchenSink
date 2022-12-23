@@ -25,7 +25,8 @@ class MenuScreenView(MDScreen):
                     {
                         "viewclass": "MenuCard",
                         "title": name_card,
-                        "elevation": 3,
+                        "elevation": 1,
+                        "shadow_softness": 4,
                         "on_release": lambda x=name_card.lower(): self.manager.switch_screen(
                             x
                         ),
